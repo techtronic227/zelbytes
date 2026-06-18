@@ -62,7 +62,7 @@ Include:
 ```markdown
 ![Circuit Diagram](outputs/cwiring_image.jpeg)
 
-![Bench Setup](images/growbench_sm.jpeg)
+![Bench Setup](outputs/growbench_sm.jpeg)
 ```
 
 ---
