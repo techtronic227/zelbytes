@@ -60,9 +60,9 @@ Include:
 * Circuit diagram
   
 ```markdown
-![Circuit Diagram](outputs/cwiring_image.png)
+![Circuit Diagram](outputs/cwiring_image.jpeg)
 
-![Bench Setup](images/growbench_sm.jpg)
+![Bench Setup](images/growbench_sm.jpeg)
 ```
 
 ---
