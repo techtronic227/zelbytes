@@ -4,192 +4,192 @@
 
 ## 1. Introduction
 
-The Automated Grow-Bench Prototype is a smart irrigation system developed using Arduino Uno. The system monitors soil moisture continuously and automatically controls irrigation through a relay-operated pump or solenoid valve. Manual override functionality and serial commands provide additional user control. The project demonstrates the application of embedded systems in precision agriculture and efficient water management.
+The Automated Grow-Bench Prototype is an Arduino Uno-based smart irrigation system designed to automate plant watering using soil moisture measurements. The system continuously monitors soil moisture and automatically activates a relay-controlled pump whenever the soil becomes dry. Manual override and serial commands provide additional control and flexibility. The project demonstrates the application of embedded systems in smart agriculture and efficient water management.
 
 ---
 
-## 2. Hardware Bill of Materials
+# 2. Objectives
 
-| Component                 | Quantity | Function                     |
-| ------------------------- | -------- | ---------------------------- |
-| Arduino Uno               | 1        | Main controller              |
-| Soil Moisture Sensor      | 1        | Measures soil moisture level |
-| Relay Module              | 1        | Controls the pump or valve   |
-| Push Button               | 1        | Enables manual override      |
-| Water Pump/Solenoid Valve | 1        | Performs irrigation          |
-| Breadboard                | 1        | Circuit assembly             |
-| Jumper Wires              | Several  | Connections                  |
-| USB Cable                 | 1        | Programming and power        |
-| External Power Supply     | 1        | Powers the pump              |
+* Monitor soil moisture continuously.
+* Automatically irrigate when soil becomes dry.
+* Provide manual override functionality.
+* Support serial commands for system control.
+* Develop a reliable and easy-to-maintain irrigation system.
 
 ---
 
-## 3. Wiring Diagram
+# 3. Hardware Bill of Materials
 
-### Pin Connections
+| Sl.No | Component              | Quantity | Approx. Price (₹) | Function               |
+| ----- | ---------------------- | -------- | ----------------- | ---------------------- |
+| 1     | Arduino Uno            | 1        | 500               | Main controller        |
+| 2     | Soil Moisture Sensor   | 1        | 80                | Measures soil moisture |
+| 3     | 1-Channel Relay Module | 1        | 100               | Controls water pump    |
+| 4     | Push Button            | 1        | 10                | Manual override        |
+| 5     | Mini Water Pump        | 1        | 150               | Irrigation actuator    |
+| 6     | Breadboard             | 1        | 100               | Circuit assembly       |
+| 7     | Jumper Wires           | 10-15    | 50                | Connections            |
+| 8     | USB Cable              | 1        | 50                | Programming and power  |
+| 9     | External Power Supply  | 1        | 200               | Powers the pump        |
 
-| Component       | Arduino Uno Pin |
-| --------------- | --------------- |
-| Soil Sensor AO  | A0              |
-| Relay IN        | D7              |
-| Push Button     | D2              |
-| Relay VCC       | 5V              |
-| Relay GND       | GND             |
-| Soil Sensor VCC | 5V              |
-| Soil Sensor GND | GND             |
+### Total Estimated Cost
 
-### Images
+**₹1200 – ₹1500**
+
+---
+
+# 4. Hardware Connections
+
+| Component               | Pin Connection |
+| ----------------------- | -------------- |
+| Soil Moisture Sensor AO | A0             |
+| Relay Module IN         | D7             |
+| Push Button             | D2             |
+| Relay VCC               | 5V             |
+| Relay GND               | GND            |
+| Soil Sensor VCC         | 5V             |
+| Soil Sensor GND         | GND            |
+
+---
+
+# 5. Wiring Diagram
 
 Include:
 
-* Bench setup photograph
+* Breadboard photograph
 * Circuit diagram
-* Fritzing export
-
-Example:
-
+  
 ```markdown
-![Circuit Diagram](images/circuit.png)
+![Circuit Diagram](outputs/cwiring_image.png)
 
-![Bench Setup](images/bench_photo.jpg)
+![Bench Setup](images/growbench_sm.jpg)
 ```
 
 ---
 
-## 4. Calibration Methodology
+# 6. Working Principle
 
-The soil moisture sensor was calibrated by measuring readings under dry and wet conditions.
+The soil moisture sensor continuously measures the moisture content of the soil. The Arduino Uno reads the analog value from the sensor through pin A0. If the moisture level exceeds the threshold value, indicating dry soil, the relay connected to pin D7 turns ON the water pump. Once sufficient moisture is achieved, the relay turns OFF the pump.
+
+A push button connected to D2 enables manual override. The user can also control the system using serial commands through the Serial Monitor.
+
+---
+
+# 7. Serial Commands
+
+### STATUS
+
+Displays:
+
+* Current mode
+* Soil moisture reading
+* Threshold value
+* Pump state
+
+### FORCE_ON
+
+Forces the pump to turn ON.
+
+### FORCE_OFF
+
+Forces the pump to turn OFF.
+
+---
+
+# 8. Calibration Methodology
+
+The soil moisture sensor was calibrated under dry and wet conditions.
 
 ### Dry Soil
 
-Typical values:
+Typical readings:
 
-600–900
+600 – 900
 
 ### Wet Soil
 
-Typical values:
+Typical readings:
 
-200–500
+200 – 500
 
-Based on experimental observations, a threshold value of 600 was selected. Values above the threshold indicate dry soil and trigger irrigation, while values below the threshold stop irrigation.
-
----
-
-## 5. System Working
-
-The soil moisture sensor continuously provides analog readings to the Arduino Uno through pin A0. When the soil becomes dry, the controller activates the relay connected to pin D7, turning on the pump. Once sufficient moisture is restored, irrigation is stopped automatically.
-
-A push button connected to D2 allows switching between automatic and manual modes. Serial commands are also implemented to provide monitoring and control.
-
-Supported commands:
-
-* STATUS
-* FORCE_ON
-* FORCE_OFF
-
-The system maintains reliable operation through continuous monitoring and user intervention when required.
+Based on experimental observations, a threshold value of 600 was selected.
 
 ---
 
-## 6. Test Results
+# 9. Test Results
 
-| Test Case             | Result |
-| --------------------- | ------ |
-| Soil moisture reading | Passed |
-| Automatic irrigation  | Passed |
-| Relay switching       | Passed |
-| Pump operation        | Passed |
-| Manual override       | Passed |
-| STATUS command        | Passed |
-| FORCE_ON command      | Passed |
-| FORCE_OFF command     | Passed |
-
-The system successfully responded to both automatic and manual control conditions.
+| Test Performed       | Status |
+| -------------------- | ------ |
+| Soil sensor reading  | Passed |
+| Automatic irrigation | Passed |
+| Relay operation      | Passed |
+| Pump control         | Passed |
+| Manual override      | Passed |
+| STATUS command       | Passed |
+| FORCE_ON command     | Passed |
+| FORCE_OFF command    | Passed |
 
 ---
 
-## 7. Known Limitations
+# 10. Known Limitations
 
-* Sensor readings depend on soil type and moisture distribution.
-* Corrosion of sensor probes may affect long-term accuracy.
-* Threshold values may require recalibration.
-* Only a single moisture sensing point is used.
+* Sensor readings vary with soil type.
+* Sensor probes may corrode over time.
+* Threshold value may require recalibration.
+* Single sensor measures only one location.
 * External power supply is required for the pump.
 
 ---
 
-## 8. Reflashing Instructions
+# 11. Reflashing Instructions
 
 ### Step 1
 
-Install Arduino IDE.
+Open Arduino IDE.
 
 ### Step 2
 
 Open:
 
-```text
+```
 grow_bench_automation.ino
 ```
 
 ### Step 3
 
-Connect Arduino Uno using a USB cable.
+Select:
+
+```
+Tools → Board → Arduino Uno
+```
 
 ### Step 4
 
-Select:
-
-Tools → Board → Arduino Uno
+Select the correct COM port.
 
 ### Step 5
 
-Choose the appropriate COM port.
+Upload the sketch.
 
 ### Step 6
 
-Upload the sketch.
+Open Serial Monitor at:
+
+```
+9600 baud
+```
 
 ### Step 7
 
-Open Serial Monitor.
+Test using:
 
-Set baud rate to:
-
-```text
-9600
 ```
-
-### Step 8
-
-Verify operation using:
-
-```text
 STATUS
 FORCE_ON
 FORCE_OFF
 ```
-
 ---
 
-## 9. Folder Structure
+# 12. Conclusion
 
-```text
-grow_bench_project
-│
-├── grow_bench_automation.ino
-├── README.md
-├── docs
-│   ├── FINAL_REPORT.md
-│   ├── wiring
-│   └── images
-│       ├── bench_photo.jpg
-│       └── circuit.png
-```
-
----
-
-## 10. Conclusion
-
-The Automated Grow-Bench Prototype successfully integrates soil moisture sensing, automatic irrigation, manual override, and serial communication into a single Arduino Uno-based system. The project provides an efficient and reliable solution for smart irrigation and demonstrates the practical implementation of embedded systems in agricultural automation. The modular design allows future enhancements such as cloud connectivity, multiple sensors, and advanced monitoring capabilities.
+The Automated Grow-Bench Prototype successfully integrates soil moisture sensing, relay control, manual override, and serial communication into a single Arduino Uno-based system. The project provides an efficient and reliable solution for automated irrigation and demonstrates the practical application of embedded systems in smart agriculture. The modular design allows future enhancements such as IoT connectivity, cloud monitoring, and multi-sensor integration.
