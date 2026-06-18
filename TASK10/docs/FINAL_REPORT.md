@@ -152,7 +152,7 @@ Open Arduino IDE.
 Open:
 
 ```
-grow_bench_automation.ino
+automated_growbench.ino
 ```
 
 ### Step 3
