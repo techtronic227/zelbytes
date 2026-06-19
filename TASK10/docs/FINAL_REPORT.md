@@ -39,35 +39,30 @@ The Smart Soil Moisture Monitoring and Automatic Irrigation System is an IoT-bas
 
 The system consists of sensing, control, communication, and actuation layers.
 
-## Sensor Layer
-
-The soil moisture sensor measures soil conditions and provides analog readings to the ESP32.
-
-## Controller Layer
-
-The ESP32 processes sensor readings and determines whether irrigation is required.
-
-## Communication Layer
-
-WiFi connectivity enables telemetry upload to the Zelbytes IoT platform.
-
-## Actuator Layer
-
-A relay module controls the water pump according to soil conditions.
+* **Sensor Layer:** Soil moisture sensor measures soil conditions.
+* **Controller Layer:** ESP32 processes sensor values.
+* **Communication Layer:** WiFi enables cloud telemetry upload.
+* **Actuator Layer:** Relay controls the water pump.
 
 ---
 
 # **3. Hardware Bill of Materials**
 
-| Component            | Quantity | Purpose           |
-| -------------------- | -------- | ----------------- |
-| ESP32                | 1        | Main Controller   |
-| Soil Moisture Sensor | 1        | Soil Monitoring   |
-| Relay Module         | 1        | Pump Control      |
-| Push Button          | 1        | Manual Override   |
-| LED                  | 1        | Status Indication |
-| Jumper Wires         | Several  | Connections       |
-| USB Cable            | 1        | Programming       |
+| Component               | Quantity | Approximate Cost (₹) | Purpose              |
+| ----------------------- | -------- | -------------------- | -------------------- |
+| ESP32 Development Board | 1        | 450                  | Main Controller      |
+| Soil Moisture Sensor    | 1        | 100                  | Soil Monitoring      |
+| Relay Module            | 1        | 80                   | Pump Control         |
+| Push Button             | 1        | 10                   | Manual Override      |
+| LED                     | 1        | 5                    | Status Indication    |
+| 220 Ω Resistor          | 1        | 2                    | LED Current Limiting |
+| Jumper Wires            | Several  | 50                   | Connections          |
+| Breadboard              | 1        | 100                  | Circuit Assembly     |
+| USB Cable               | 1        | 80                   | Programming          |
+| Water Pump              | 1        | 250                  | Irrigation           |
+| External Power Supply   | 1        | 300                  | Pump Power           |
+
+### **Total Estimated Cost: ₹1427**
 
 ---
 
@@ -114,21 +109,19 @@ Sensor values are uploaded to the Zelbytes IoT Dashboard through HTTP POST reque
 
 # **6. Sensor Calibration Methodology**
 
-## Dry Soil
+### Dry Soil
 
 Typical ADC values:
 
 * 2800 – 3500
 
-## Wet Soil
+### Wet Soil
 
 Typical ADC values:
 
 * 800 – 1500
 
-## Selected Threshold
-
-Threshold value:
+### Selected Threshold
 
 * 2000 ADC
 
@@ -148,43 +141,35 @@ The dashboard provides:
 
 ### Test Case 1
 
-Dry soil condition.
+Dry soil condition
 
-Expected Result:
+**Expected Result:** Pump ON
 
-Pump ON
-
-Result: PASS
+**Result:** PASS
 
 ### Test Case 2
 
-Wet soil condition.
+Wet soil condition
 
-Expected Result:
+**Expected Result:** Pump OFF
 
-Pump OFF
-
-Result: PASS
+**Result:** PASS
 
 ### Test Case 3
 
-Manual override using push button.
+Manual override using push button
 
-Expected Result:
+**Expected Result:** Relay toggles
 
-Relay toggles
-
-Result: PASS
+**Result:** PASS
 
 ### Test Case 4
 
-Telemetry upload.
+Telemetry upload
 
-Expected Result:
+**Expected Result:** Dashboard receives data
 
-Dashboard receives data
-
-Result: PASS
+**Result:** PASS
 
 ---
 
